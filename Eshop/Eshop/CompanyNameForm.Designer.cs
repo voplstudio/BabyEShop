@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // CancelButton
+            // CancelBtn
             // 
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(218, 443);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(80, 28);
-            this.CancelButton.TabIndex = 3;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Location = new System.Drawing.Point(218, 443);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(80, 28);
+            this.CancelBtn.TabIndex = 3;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ChangeButton
             // 
@@ -75,7 +75,7 @@
             this.ClientSize = new System.Drawing.Size(386, 501);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ChangeButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelBtn);
             this.Name = "CompanyNameForm";
             this.Text = "Company Name";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -85,7 +85,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button ChangeButton;
         public System.Windows.Forms.DataGridView dataGridView1;
     }

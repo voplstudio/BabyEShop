@@ -86,19 +86,21 @@ namespace Eshop
 
         private void SaveButton_Click(object sender, EventArgs e)
         {//TODO проверять заполнение имени компании
-            Order order = new Order();
-            order.OrderID = this.order.OrderID;
-            order.ShipName = ShipNameTextBox.Text;
-            order.Freight = Int32.Parse(FreightTextBox.Text);
-            order.ShipAddress = ShipAddressTextBox.Text;
-            order.ShipCity = ShipCityTextBox.Text;
-            order.ShipRegion = ShipRegionTextBox.Text;
-            order.ShipPostalCode = ShipPostalCodeTextBox.Text;
-            order.ShipCountry = ShipCountryTextBox.Text;
-            order.OrderDate = OrderDateDateTimePicker.Value;
-            order.RequiredDate = RequiredDateDateTimePicker.Value;
-            order.ShippedDate = ShippingDateDateTimePicker.Value;
-            order.CustomerID = this.order.CustomerID;
+            Order order = new Order
+            {
+                OrderID = this.order.OrderID,
+                ShipName = ShipNameTextBox.Text,
+                Freight = Int32.Parse(FreightTextBox.Text),
+                ShipAddress = ShipAddressTextBox.Text,
+                ShipCity = ShipCityTextBox.Text,
+                ShipRegion = ShipRegionTextBox.Text,
+                ShipPostalCode = ShipPostalCodeTextBox.Text,
+                ShipCountry = ShipCountryTextBox.Text,
+                OrderDate = OrderDateDateTimePicker.Value,
+                RequiredDate = RequiredDateDateTimePicker.Value,
+                ShippedDate = ShippingDateDateTimePicker.Value,
+                CustomerID = this.order.CustomerID
+            };
             order.Items.Clear();
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
@@ -116,16 +118,24 @@ namespace Eshop
                     });
                 }
             }
-            if (order.OrderID > 0)
+            try
             {
-                DataAccess.SaveExistingOrder(order);
+                if (order.OrderID > 0)
+                {
+                    DataAccess.SaveExistingOrder(order);
+                }
+                else
+                {
+                    DataAccess.SaveNewOrder(order);
+                    OrderNumberTextBox.Text = order.Number; 
+                }
+                IsSaved = true;
             }
-            else
-            {
-                DataAccess.SaveNewOrder(order);
-                OrderNumberTextBox.Text = order.Number; 
+            catch (Exception)
+            {               
+                MessageBox.Show("The order can not be saved.");
             }
-            IsSaved = true;
+            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -147,11 +157,11 @@ namespace Eshop
             if (ccnForm.ShowDialog() == DialogResult.OK)
             {
                 order.CustomerID = ccnForm.Id;
-                CompanyNameTextBox.Text = ccnForm.CompanyName;
+                CompanyNameTextBox.Text = ccnForm.Company;
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5)
             {
@@ -163,9 +173,14 @@ namespace Eshop
                 if (cpForm.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1.Rows[e.RowIndex].Cells[1].Value = cpForm.ProductID;
-                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = cpForm.ProductName;
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = cpForm.Product;
                 }
             }
+        }
+
+        private void CompanyNameTextBox_DoubleClick(object sender, EventArgs e)
+        {
+            ChangeCompanyNameButton_Click(sender, e);
         }
     }
 }

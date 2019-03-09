@@ -13,7 +13,7 @@ namespace Eshop
     public partial class ChangeProductForm : Form
     {
         public string ProductID = null;
-        public string ProductName = null;
+        public string Product = null;
         public ChangeProductForm()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Eshop
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 ProductID = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                ProductName = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                Product = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 DialogResult = DialogResult.OK;
 
             }

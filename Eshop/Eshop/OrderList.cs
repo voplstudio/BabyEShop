@@ -45,7 +45,7 @@ namespace Eshop
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.DataSource != null)
                 System.Diagnostics.Debug.WriteLine("listBox1_SelectedIndexChanged");

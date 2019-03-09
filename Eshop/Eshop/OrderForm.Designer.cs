@@ -52,14 +52,14 @@
             this.ShipCountryTextBox = new System.Windows.Forms.TextBox();
             this.tabOrder = new System.Windows.Forms.TabControl();
             this.tabHeader = new System.Windows.Forms.TabPage();
+            this.OrderNumberLabel = new System.Windows.Forms.Label();
+            this.OrderNumberTextBox = new System.Windows.Forms.TextBox();
             this.ChangeCompanyNameButton = new System.Windows.Forms.Button();
             this.CompanyNameLabel = new System.Windows.Forms.Label();
             this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
             this.tabList = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.OrderNumberLabel = new System.Windows.Forms.Label();
-            this.OrderNumberTextBox = new System.Windows.Forms.TextBox();
             this.tabOrder.SuspendLayout();
             this.tabHeader.SuspendLayout();
             this.tabList.SuspendLayout();
@@ -103,10 +103,10 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // ReqiredDateDateTimePicker
+            // RequiredDateDateTimePicker
             // 
             this.RequiredDateDateTimePicker.Location = new System.Drawing.Point(140, 149);
-            this.RequiredDateDateTimePicker.Name = "ReqiredDateDateTimePicker";
+            this.RequiredDateDateTimePicker.Name = "RequiredDateDateTimePicker";
             this.RequiredDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.RequiredDateDateTimePicker.TabIndex = 4;
             // 
@@ -293,6 +293,23 @@
             this.tabHeader.Text = "Header";
             this.tabHeader.UseVisualStyleBackColor = true;
             // 
+            // OrderNumberLabel
+            // 
+            this.OrderNumberLabel.AutoSize = true;
+            this.OrderNumberLabel.Location = new System.Drawing.Point(37, 19);
+            this.OrderNumberLabel.Name = "OrderNumberLabel";
+            this.OrderNumberLabel.Size = new System.Drawing.Size(73, 13);
+            this.OrderNumberLabel.TabIndex = 17;
+            this.OrderNumberLabel.Text = "Order Number";
+            // 
+            // OrderNumberTextBox
+            // 
+            this.OrderNumberTextBox.Location = new System.Drawing.Point(140, 19);
+            this.OrderNumberTextBox.Name = "OrderNumberTextBox";
+            this.OrderNumberTextBox.ReadOnly = true;
+            this.OrderNumberTextBox.Size = new System.Drawing.Size(100, 20);
+            this.OrderNumberTextBox.TabIndex = 18;
+            // 
             // ChangeCompanyNameButton
             // 
             this.ChangeCompanyNameButton.Location = new System.Drawing.Point(346, 58);
@@ -319,6 +336,7 @@
             this.CompanyNameTextBox.ReadOnly = true;
             this.CompanyNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.CompanyNameTextBox.TabIndex = 15;
+            this.CompanyNameTextBox.DoubleClick += new System.EventHandler(this.CompanyNameTextBox_DoubleClick);
             // 
             // tabList
             // 
@@ -339,7 +357,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(624, 560);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellDoubleClick);
             // 
             // panel1
             // 
@@ -350,23 +368,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(638, 50);
             this.panel1.TabIndex = 15;
-            // 
-            // OrderNumberLabel
-            // 
-            this.OrderNumberLabel.AutoSize = true;
-            this.OrderNumberLabel.Location = new System.Drawing.Point(37, 19);
-            this.OrderNumberLabel.Name = "OrderNumberLabel";
-            this.OrderNumberLabel.Size = new System.Drawing.Size(73, 13);
-            this.OrderNumberLabel.TabIndex = 17;
-            this.OrderNumberLabel.Text = "Order Number";
-            // 
-            // OrderNumberTextBox
-            // 
-            this.OrderNumberTextBox.Location = new System.Drawing.Point(140, 19);
-            this.OrderNumberTextBox.Name = "OrderNumberTextBox";
-            this.OrderNumberTextBox.ReadOnly = true;
-            this.OrderNumberTextBox.Size = new System.Drawing.Size(100, 20);
-            this.OrderNumberTextBox.TabIndex = 18;
             // 
             // OrderForm
             // 

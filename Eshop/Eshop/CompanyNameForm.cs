@@ -13,7 +13,7 @@ namespace Eshop
     public partial class CompanyNameForm : Form
     {
         public string Id = null;
-        public string CompanyName = null;
+        public string Company = null;
         public CompanyNameForm()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Eshop
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 Id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                CompanyName = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                Company = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 DialogResult = DialogResult.OK;
 
             }
