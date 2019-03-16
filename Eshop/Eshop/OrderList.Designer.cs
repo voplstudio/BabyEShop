@@ -32,6 +32,7 @@
             this.NewButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EditButton
@@ -56,7 +57,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(409, 88);
+            this.CloseButton.Location = new System.Drawing.Point(409, 117);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 3;
@@ -72,11 +73,22 @@
             this.listBox1.Size = new System.Drawing.Size(343, 355);
             this.listBox1.TabIndex = 4;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(409, 88);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 5;
+            this.DeleteButton.Text = "Delete ";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // OrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 670);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.NewButton);
@@ -93,6 +105,7 @@
         private System.Windows.Forms.Button NewButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
 

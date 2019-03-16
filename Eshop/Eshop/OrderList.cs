@@ -64,5 +64,15 @@ namespace Eshop
         {          
             ShowOrder(null);
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Confirmation deleting", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DataAccess.DeleteOrder((listBox1.SelectedItem as Tuple<int, string>).Item1);
+                FillOrderList();
+            }
+
+        }
     }
 }

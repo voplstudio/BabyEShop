@@ -67,6 +67,32 @@ namespace Eshop
             }
         }
 
+        internal static void DeleteOrder(int orderID)
+        {
+            string queryString = "DELETE FROM dbo.Orders WHERE OrderID = @orderID";
+            using (SqlConnection conn = new SqlConnection(NorthwindDBConnectionString))
+            {
+                SqlTransaction transaction;
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlParameter[] parms = new SqlParameter[]
+                        { new SqlParameter("@orderID", SqlDbType.Int) { Value = orderID } };
+
+                    ExecuteNonQuery(conn, transaction, queryString, CommandType.Text, parms);
+                    DeleteOrderDetails(conn, transaction, orderID);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+
+            }
+
+        }
 
         static void OrderListReaderProc(SqlDataReader reader, object recipient)
         {
@@ -225,15 +251,7 @@ namespace Eshop
                         new SqlParameter("@11", SqlDbType.NVarChar) { Value = order.CustomerID }};
 
                     ExecuteNonQuery(conn, transaction, queryString, CommandType.Text, parms);
-
-                    queryString =
-                        "DELETE FROM dbo.[Order Details] " +
-                        "WHERE OrderID=@0";
-
-                    parms = new SqlParameter[]
-                        { new SqlParameter("@0", SqlDbType.Int) { Value = order.OrderID } };
-
-                    ExecuteNonQuery(conn, transaction, queryString, CommandType.Text, parms);
+                    DeleteOrderDetails(conn, transaction, order.OrderID);
 
                     queryString =
                         "INSERT INTO dbo.[Order Details] " +
@@ -260,6 +278,19 @@ namespace Eshop
                 }
             }
         }
+
+        private static void DeleteOrderDetails(SqlConnection conn, SqlTransaction transaction, int orderId)
+        {
+            string queryString =
+                                    "DELETE FROM dbo.[Order Details] " +
+                                    "WHERE OrderID=@0";
+
+            SqlParameter[] parms = new SqlParameter[]
+                 { new SqlParameter("@0", SqlDbType.Int) { Value = orderId } };
+
+            ExecuteNonQuery(conn, transaction, queryString, CommandType.Text, parms);
+        }
+
         internal static void SaveNewOrder(Order order)
         {
             string queryString = "SELECT  MAX([OrderID]) FROM dbo.[Orders]";
