@@ -27,17 +27,21 @@ namespace Eshop
             listBox1.ValueMember = "Item1";
             listBox1.Cursor = Cursors.Arrow;
         }
-        private void EditButton_Click(object sender, EventArgs e)
+        public void ShowOrder(Order order)
         {
-            // read order
-            Order order = DataAccess.ReadOrder((listBox1.SelectedItem as Tuple<int, string>).Item1);
             OrderForm form = new OrderForm(order);
             form.ShowDialog();
             if (form.IsSaved)
             {
                 FillOrderList();
             }
+        }
 
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            // read order
+            Order order = DataAccess.ReadOrder((listBox1.SelectedItem as Tuple<int, string>).Item1);
+            ShowOrder(order);
         }
 
         private void OrderList_Load(object sender, EventArgs e)
@@ -57,8 +61,8 @@ namespace Eshop
         }
 
         private void NewButton_Click(object sender, EventArgs e)
-        {
-           (new OrderForm(null)).ShowDialog();
+        {          
+            ShowOrder(null);
         }
     }
 }

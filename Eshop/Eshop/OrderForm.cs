@@ -85,22 +85,24 @@ namespace Eshop
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
-        {//TODO проверять заполнение имени компании
-            Order order = new Order
+        {
+            
+            if(string.IsNullOrEmpty(this.order.CustomerID))    
             {
-                OrderID = this.order.OrderID,
-                ShipName = ShipNameTextBox.Text,
-                Freight = Int32.Parse(FreightTextBox.Text),
-                ShipAddress = ShipAddressTextBox.Text,
-                ShipCity = ShipCityTextBox.Text,
-                ShipRegion = ShipRegionTextBox.Text,
-                ShipPostalCode = ShipPostalCodeTextBox.Text,
-                ShipCountry = ShipCountryTextBox.Text,
-                OrderDate = OrderDateDateTimePicker.Value,
-                RequiredDate = RequiredDateDateTimePicker.Value,
-                ShippedDate = ShippingDateDateTimePicker.Value,
-                CustomerID = this.order.CustomerID
-            };
+                MessageBox.Show("You have to fill Company Name.");
+                return; 
+            }
+            order.ShipName = ShipNameTextBox.Text;
+            order.Freight = Int32.Parse(FreightTextBox.Text);
+            order.ShipAddress = ShipAddressTextBox.Text;
+            order.ShipCity = ShipCityTextBox.Text;
+            order.ShipRegion = ShipRegionTextBox.Text;
+            order.ShipPostalCode = ShipPostalCodeTextBox.Text;
+            order.ShipCountry = ShipCountryTextBox.Text;
+            order.OrderDate = OrderDateDateTimePicker.Value;
+            order.RequiredDate = RequiredDateDateTimePicker.Value;
+            order.ShippedDate = ShippingDateDateTimePicker.Value;
+            
             order.Items.Clear();
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
